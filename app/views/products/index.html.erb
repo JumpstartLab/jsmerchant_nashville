@@ -1,0 +1,25 @@
+<% title "Products" %>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Buy Now</th>
+  </tr>
+  <% for product in @products %>
+    <tr>
+      <td><%= product_image product %></td>
+      <td>
+        <span class="product_title"><%= link_to product.title, product %></span>
+        <%= product.description %>
+      </td>
+      <td><%= product.price_in_dollars %></td>
+      <td><%= print_stock product.stock %></td>
+      <td><%= button_to "Add to Cart", order_items_path(:product_id => product) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Product", new_product_path, :id => "new_product" %></p>

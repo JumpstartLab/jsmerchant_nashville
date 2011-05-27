@@ -1,0 +1,12 @@
+<%= form_for @order do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.text_field :customer_id %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

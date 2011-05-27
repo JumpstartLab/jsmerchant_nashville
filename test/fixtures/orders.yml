@@ -1,0 +1,7 @@
+one:
+  customer_id: 1
+  status: MyString
+
+two:
+  customer_id: 1
+  status: MyString

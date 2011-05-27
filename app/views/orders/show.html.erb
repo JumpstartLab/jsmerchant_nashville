@@ -1,0 +1,47 @@
+<h1>Your Order</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <td><%= @order.customer_id %></td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+    <td><%= @order.status %></td>
+  </tr>
+  <tr>
+    <th>Items:</th>
+    <td><%= @order.order_items.count %></td>
+  </tr>
+  <tr>
+    <th>Items</th>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Stock</th>
+    <th>Unit Price</th>
+    <th>Subtotal</th>
+    <th>Actions</th>
+  </tr>
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= product_image item.product %></td>
+      <td><%= item.product.title %></td>
+      <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
+      <td><%= print_stock item.product.stock, item.quantity %></td>
+      <td><%= item.product.price_in_dollars %></td>
+      <td><%= item.formatted_subtotal %></td>
+      <td>
+        <%= link_to "remove", item, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Total</th>
+    <td><%= @order.formatted_total %></td>
+  </tr>
+  <tr>
+    <th>Actions</th>
+    <td><%= link_to "Empty Cart", @order, :confirm => 'Empty the cart?!?', :method => :delete %></td>
+  </tr>
+
+</table>
